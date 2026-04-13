@@ -1,6 +1,8 @@
 const { Client } = require('discord.js-selfbot-v13');
-// No añadimos nada dentro de los paréntesis para que no haya conflictos
-const client = new Client();
+// Eliminamos cualquier configuración automática y dejamos que la librería decida
+const client = new Client({
+    checkUpdate: false
+});
 
 const MI_TOKEN = process.env.TOKEN; 
 const OWNER_ID = process.env.OWNER_ID;
@@ -27,22 +29,21 @@ client.on('ready', () => {
 });
 
 client.on('messageCreate', async (message) => {
+    // Importante: No uses comandos con "/" si son selfbots, usa un prefijo como "!"
+    // Pero si quieres seguir con "/", cámbialos aquí:
     if (message.author.id !== OWNER_ID) return;
 
-    const args = message.content.split(' ');
-    const command = args[0].toLowerCase();
-
-    if (command === '/spam') {
+    if (message.content === '/spam') {
         await message.delete().catch(() => {});
         await message.channel.send(EXCLUSIVE_TEXT);
         await message.channel.send(`⚠️ **DETECTED BY VOID** ⚠️\n${INVITE_LINK_BASE}`);
         await message.channel.send(GIF_ANIME);
     }
 
-    if (command === '/spam_custom') {
+    if (message.content.startsWith('/spam_custom')) {
         await message.delete().catch(() => {});
-        const loQueYoQuiera = args.slice(1).join(' ');
-        if (!loQueYoQuiera) return;
+        const loQueYoQuiera = message.content.replace('/spam_custom ', '');
+        if (!loQueYoQuiera || loQueYoQuiera === '/spam_custom') return;
 
         await message.channel.send(`⚡ **BROADCAST:** ${loQueYoQuiera} ⚡`); 
         await message.channel.send(GIF_HAKURI);
