@@ -1,0 +1,15 @@
+{
+  "name": "void-self-spam",
+  "version": "1.0.0",
+  "description": "Sistema de Spam Exclusivo - VOID SYNDICATE",
+  "main": "index.js",
+  "dependencies": {
+    "discord.js-selfbot-v13": "^2.15.0"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "18.x"
+  }
+}
