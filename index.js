@@ -1,8 +1,8 @@
 const { Client } = require('discord.js-selfbot-v13');
 const client = new Client({ checkUpdate: false });
 
-// --- CONFIGURACIÓN ---
-const MI_TOKEN = 'TU_TOKEN_AQUÍ'; 
+// --- CONFIGURACIÓN CONFIGURADA ---
+const MI_TOKEN = 'MTQ5MzAxNDEzNTk4MDY4NzQ0NQ.G96zfD.CH5WKmd7mpKRjKO4dsCKR01JSdRXMlo2byhOmY'; 
 const OWNER_ID = '1093314865873035294';
 const INVITE_LINK_BASE = "https://discord.gg/83qsNSz6CN";
 
@@ -10,7 +10,7 @@ const INVITE_LINK_BASE = "https://discord.gg/83qsNSz6CN";
 const GIF_HAKURI = "https://cdn.discordapp.com/attachments/1492707948747817010/1493019735338516671/23754-hakuri.gif";
 const GIF_ANIME = "https://cdn.discordapp.com/attachments/1492707382239826066/1493236722958471168/85738-anime.gif";
 
-// TEXTO PERSONALIZADO CON EMOJIS (GOD LEVEL)
+// TEXTO EXCLUSIVO CON EMOJIS (GOD LEVEL)
 const EXCLUSIVE_TEXT = `
 > 🌌 **VOID SYNDICATE SYSTEM** 🌌
 \`\`\`ansi
@@ -25,7 +25,7 @@ const EXCLUSIVE_TEXT = `
 🔥 **¡ÚNETE O DESAPARECE!** 🔥`;
 
 client.on('ready', () => {
-    console.log(`[+] SISTEMA VOID ACTIVO EN: ${client.user.tag}`);
+    console.log(`[+] SISTEMA VOID ONLINE EN: ${client.user.tag}`);
 });
 
 client.on('messageCreate', async (message) => {
@@ -35,24 +35,23 @@ client.on('messageCreate', async (message) => {
     const args = message.content.split(' ');
     const command = args[0].toLowerCase();
 
-    // --- /SPAM (El texto personalizado con emojis) ---
+    // --- /SPAM (Gratis con tu invitación) ---
     if (command === '/spam') {
         await message.delete().catch(() => {});
         
-        // Ejecución en 3 pasos con impacto
         await message.channel.send(EXCLUSIVE_TEXT);
         await message.channel.send(`⚠️ **DETECTED BY VOID** ⚠️\n${INVITE_LINK_BASE}`);
         await message.channel.send(GIF_ANIME);
     }
 
-    // --- /SPAM_CUSTOM (Sin tu link, solo lo que tú agregues) ---
+    // --- /SPAM_CUSTOM (Premium: Solo lo que agregues tú) ---
     if (command === '/spam_custom') {
         await message.delete().catch(() => {});
 
         const loQueYoQuiera = args.slice(1).join(' ');
         if (!loQueYoQuiera) return;
 
-        // Formato Ultra-Personalizado para el Premium
+        // Formato Ultra-Personalizado
         await message.channel.send(`⚡ **BROADCAST:** ${loQueYoQuiera} ⚡`); 
         await message.channel.send(GIF_HAKURI);
         await message.channel.send(GIF_ANIME);
