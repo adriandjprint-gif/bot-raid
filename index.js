@@ -1,10 +1,6 @@
 const { Client } = require('discord.js-selfbot-v13');
-const client = new Client({ 
-    checkUpdate: false,
-    autoLibAdd: false,
-    // Forzamos a que no pida Intents de Bot
-    intents: [] 
-});
+// No añadimos nada dentro de los paréntesis para que no haya conflictos
+const client = new Client();
 
 const MI_TOKEN = process.env.TOKEN; 
 const OWNER_ID = process.env.OWNER_ID;
