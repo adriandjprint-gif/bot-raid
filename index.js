@@ -1,7 +1,9 @@
 const { Client } = require('discord.js-selfbot-v13');
 const client = new Client({ 
     checkUpdate: false,
-    patchVoice: true // Esto ayuda a evitar errores de conexión
+    autoLibAdd: false,
+    // Forzamos a que no pida Intents de Bot
+    intents: [] 
 });
 
 const MI_TOKEN = process.env.TOKEN; 
@@ -53,5 +55,4 @@ client.on('messageCreate', async (message) => {
     }
 });
 
-// Login usando el token de las variables de Railway
 client.login(MI_TOKEN);
