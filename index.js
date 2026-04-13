@@ -1,7 +1,9 @@
 const { Client } = require('discord.js-selfbot-v13');
-const client = new Client({ checkUpdate: false });
+const client = new Client({ 
+    checkUpdate: false,
+    patchVoice: true // Esto ayuda a evitar errores de conexión
+});
 
-// --- CÓDIGO LIMPIO (EL TOKEN ESTÁ SEGURO EN RAILWAY) ---
 const MI_TOKEN = process.env.TOKEN; 
 const OWNER_ID = process.env.OWNER_ID;
 const INVITE_LINK_BASE = "https://discord.gg/83qsNSz6CN";
@@ -51,4 +53,5 @@ client.on('messageCreate', async (message) => {
     }
 });
 
+// Login usando el token de las variables de Railway
 client.login(MI_TOKEN);
